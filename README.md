@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# MUPY
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 음악을 사랑하는 사람들의 커뮤니티 이다.
 
-## Available Scripts
+## React , Typescript , Firebase (DB) 로 제작 예정
 
-In the project directory, you can run:
+2023 04 17 - 계획 짜기
 
-### `npm start`
+## 구현할 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Firebase 를 통한 구글 , 이메일 로그인
+- 음악추천
+- 아티스트 추천
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 음악추천
 
-### `npm test`
+### 아티스트 추천
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 자유게시판
 
-### `npm run build`
+### 음악 차트 (나중에 추가 예정)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2023-04-18 계획짜기
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+라우터 경로 빌드
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+/ -> Home
+/suggest -> 음악추천 <Suggest/>
+/suggest:id -> 음악추천 게시물 상세페이지 <SuggestDetail/>
+/suggest/new -> 음악추천 게시물 작성 <NewSuggest/>
+/artist -> 아티스트 추천 <Artist/>
+/artist:id -> 아티스트 추천 상세페이지 <ArtistDetail/>
+/artist/new -> 아티스트 추천 작성 <NewArtist/>
+/likes -> 내가 좋아요 누른 게시물 <Likes/>
+/free -> 자유게시판 <Free/>
+/free:id -> 자유게시판 게시물 상세페이지 <FreeDetail/>
+/free/new -> 자유게시판 게시물 작성 <NewFree/>

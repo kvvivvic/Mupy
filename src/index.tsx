@@ -1,15 +1,81 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import Suggest from "./pages/Suggest";
+import SuggestDetail from "./pages/SuggestDetail";
+import NewSuggest from "./pages/NewSuggest";
+import Artist from "./pages/Artist";
+import ArtistDetail from "./pages/ArtistDetail";
+import NewArtist from "./pages/NewArtist";
+import Free from "./pages/Free";
+import FreeDetail from "./pages/FreeDetail";
+import NewFree from "./pages/NewFree";
+import Likes from "./pages/Likes";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/suggest",
+        element: <Suggest />,
+      },
+      {
+        path: "/suggest/:id",
+        element: <SuggestDetail />,
+      },
+      {
+        path: "/suggest/new",
+        element: <NewSuggest />,
+      },
+      {
+        path: "/artist",
+        element: <Artist />,
+      },
+      {
+        path: "/artist/:id",
+        element: <ArtistDetail />,
+      },
+      {
+        path: "/artist/new",
+        element: <NewArtist />,
+      },
+      {
+        path: "/free",
+        element: <Free />,
+      },
+      {
+        path: "/free/:id",
+        element: <FreeDetail />,
+      },
+      {
+        path: "/free/new",
+        element: <NewFree />,
+      },
+      {
+        path: "/likes",
+        element: <Likes />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
