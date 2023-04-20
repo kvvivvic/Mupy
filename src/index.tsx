@@ -16,6 +16,7 @@ import Free from "./pages/Free";
 import FreeDetail from "./pages/FreeDetail";
 import NewFree from "./pages/NewFree";
 import Likes from "./pages/Likes";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/likes",
         element: <Likes />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
       },
     ],
   },

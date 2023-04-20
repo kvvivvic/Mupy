@@ -11,7 +11,7 @@ const Navbar = () => {
         <Link to="/suggest">음악추천</Link>
         <Link to="/artist">아티스트추천</Link>
         <Link to="/free">자유게시판</Link>
-        <button>Login</button>
+        <Link to="/login">Login</Link>
       </nav>
     </header>
   );
