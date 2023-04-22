@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import { FcGoogle } from "react-icons/fc";
+import { googleLogin } from "../../api/firebase";
 
 const LoginInput = () => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
@@ -18,12 +19,10 @@ const LoginInput = () => {
   const handlePwBlur = () => {
     setIsFocusPw(!isFocusPw);
   };
-
-  const handleLogin = (): void => {
-    console.log("heelo");
-  };
-  const handleGoogleLogin = (): void => {
-    console.log("lohl");
+  const handleLogin = () => {};
+  const handleGoogleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    googleLogin();
   };
   return (
     <form className=" w-72 mx-auto flex flex-col justify-center">
@@ -39,8 +38,8 @@ const LoginInput = () => {
         </label>
         <input onBlur={handlePwBlur} onFocus={handlePwFocus} type="text" id="pw" name="pw" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-2`} />
       </div>
-      <Button onClick={handleLogin} label="로그인" />
-      <Button onClick={handleGoogleLogin} label="Google 로그인" icon={FcGoogle} />
+      <Button onClick={handleLogin} label="로그인" textStyle="text-white" bgStyle="bg-blue-600" />
+      <Button onClick={handleGoogleLogin} label="Google 로그인" icon={FcGoogle} textStyle="text-blue-600" bgStyle="bg-white" borderStyle="border border-blue-600" />
     </form>
   );
 };
