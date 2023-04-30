@@ -6,6 +6,7 @@ import { googleLogin } from "../../api/firebase";
 const LoginInput = () => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const [isFocusPw, setIsFocusPw] = useState<boolean>(false);
+  const [isvalue, setIsvalue] = useState<boolean>(false);
 
   const handleEmailFocus = () => {
     setIsFocus(!isFocus);
@@ -27,16 +28,21 @@ const LoginInput = () => {
   return (
     <form className=" w-72 mx-auto flex flex-col justify-center">
       <div className="relative">
-        <label htmlFor="email" className={`text-md absolute font-gray-600 transition ease-in-out left-3 top-4 ${isFocus ? "-translate-x-2" : ""} ${isFocus ? "-translate-y-3" : ""} ${isFocus ? "scale-75" : ""}`}>
+        <input onBlur={handleEmailBlur} onFocus={handleEmailFocus} type="text" id="email" name="email" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-1 peer transition`} required />
+        <label
+          htmlFor="email"
+          className={`text-md absolute font-gray-600 transition ease-in-out left-3 top-4
+         peer-focus:-translate-x-2 peer-focus:scale-75 peer-focus:-translate-y-3 
+         `}
+        >
           이메일
         </label>
-        <input onBlur={handleEmailBlur} onFocus={handleEmailFocus} type="text" id="email" name="email" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-1`} />
       </div>
       <div className="relative">
         <label htmlFor="pw" className={`text-md absolute font-gray-600 transition ease-in-out left-3 top-4 ${isFocusPw ? "-translate-x-2" : ""} ${isFocusPw ? "-translate-y-3" : ""} ${isFocusPw ? "scale-75" : ""}`}>
           비밀번호
         </label>
-        <input onBlur={handlePwBlur} onFocus={handlePwFocus} type="text" id="pw" name="pw" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-2`} />
+        <input onBlur={handlePwBlur} onFocus={handlePwFocus} type="text" id="pw" name="pw" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-2`} required />
       </div>
       <Button onClick={handleLogin} label="로그인" textStyle="text-white" bgStyle="bg-blue-600" />
       <Button onClick={handleGoogleLogin} label="Google 로그인" icon={FcGoogle} textStyle="text-blue-600" bgStyle="bg-white" borderStyle="border border-blue-600" />

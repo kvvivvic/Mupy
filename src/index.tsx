@@ -17,6 +17,8 @@ import FreeDetail from "./pages/FreeDetail";
 import NewFree from "./pages/NewFree";
 import Likes from "./pages/Likes";
 import LoginPage from "./pages/LoginPage";
+import SignIn from "./pages/Signup";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +75,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
     ],
   },
 ]);
@@ -81,6 +87,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Toaster />
   </React.StrictMode>
 );
 
