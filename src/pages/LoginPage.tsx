@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import LoginInput from "../components/Login/LoginInput";
-import { Link } from "react-router-dom";
-import Button from "../components/Button/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const user = useContext(AuthContext);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  });
   return (
     <div className="w-full h-screen mx-auto flex justify-center items-center flex-col">
       <LoginInput />

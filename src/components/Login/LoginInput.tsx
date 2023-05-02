@@ -1,48 +1,61 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import { FcGoogle } from "react-icons/fc";
-import { googleLogin } from "../../api/firebase";
+import { EmailLogin, googleLogin } from "../../api/firebase";
+
+export const INPUT_CSS = `border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-1 peer transition
+         `;
+export const LABEL_CSS = `text-md absolute font-gray-600 transition ease-in-out left-3 top-4
+         peer-focus:-translate-x-2 peer-focus:scale-75 peer-focus:-translate-y-3  peer-valid:scale-75 peer-valid:-translate-x-2 peer-valid:-translate-y-3`;
 
 const LoginInput = () => {
-  const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [isFocusPw, setIsFocusPw] = useState<boolean>(false);
-  const [isvalue, setIsvalue] = useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
 
-  const handleEmailFocus = () => {
-    setIsFocus(!isFocus);
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    EmailLogin(email, pwd);
   };
-  const handleEmailBlur = () => {
-    setIsFocus(!isFocus);
-  };
-  const handlePwFocus = () => {
-    setIsFocusPw(!isFocusPw);
-  };
-  const handlePwBlur = () => {
-    setIsFocusPw(!isFocusPw);
-  };
-  const handleLogin = () => {};
   const handleGoogleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     googleLogin();
   };
+
   return (
     <form className=" w-72 mx-auto flex flex-col justify-center">
       <div className="relative">
-        <input onBlur={handleEmailBlur} onFocus={handleEmailFocus} type="text" id="email" name="email" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-1 peer transition`} required />
+        <input
+          type="text"
+          id="email"
+          name="email"
+          className={`${INPUT_CSS}`}
+          required
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
         <label
           htmlFor="email"
-          className={`text-md absolute font-gray-600 transition ease-in-out left-3 top-4
-         peer-focus:-translate-x-2 peer-focus:scale-75 peer-focus:-translate-y-3 
+          className={`${LABEL_CSS}
          `}
         >
           이메일
         </label>
       </div>
       <div className="relative">
-        <label htmlFor="pw" className={`text-md absolute font-gray-600 transition ease-in-out left-3 top-4 ${isFocusPw ? "-translate-x-2" : ""} ${isFocusPw ? "-translate-y-3" : ""} ${isFocusPw ? "scale-75" : ""}`}>
+        <input
+          type="text"
+          id="pw"
+          name="pw"
+          className={`${INPUT_CSS}`}
+          required
+          onChange={(e) => {
+            setPwd(e.target.value);
+          }}
+        />
+        <label htmlFor="pw" className={`${LABEL_CSS}`}>
           비밀번호
         </label>
-        <input onBlur={handlePwBlur} onFocus={handlePwFocus} type="text" id="pw" name="pw" className={`border border-gray-600 w-full rounded-[4px] h-14 pt-4 pl-3 mb-2`} required />
       </div>
       <Button onClick={handleLogin} label="로그인" textStyle="text-white" bgStyle="bg-blue-600" />
       <Button onClick={handleGoogleLogin} label="Google 로그인" icon={FcGoogle} textStyle="text-blue-600" bgStyle="bg-white" borderStyle="border border-blue-600" />
