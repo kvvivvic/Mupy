@@ -20,6 +20,7 @@ import LoginPage from "./pages/LoginPage";
 import SignIn from "./pages/Signup";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "./provider/AuthProvider";
+import PostWrite from "./pages/PostWrite";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignIn />,
+      },
+      {
+        path: "/write",
+        element: <PostWrite />,
       },
     ],
   },
